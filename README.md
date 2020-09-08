@@ -24,6 +24,6 @@ Function        Write-ExValToXlsx                                  0.0        Ex
 ```
 
 # いきなり使える系のコマンド
-Read-ExXlsxTableToPSO
-Write-ExPSOToXlsxTable
+・ Read-ExXlsxTableToPSO
+・ Write-ExPSOToXlsxTable
 
