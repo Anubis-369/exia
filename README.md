@@ -23,7 +23,27 @@ Function        Write-ExPSOToXlsxTable                             0.0        Ex
 Function        Write-ExValToXlsx                                  0.0        Exia
 ```
 
+使い方はヘルプから参照できます。
+
+```
+> get-help Write-ExPSOToList
+
+名前
+    Write-ExPSOToList
+
+概要
+    PSObjectの内容をCOM経由で開いているExcelのファイルにList形式で書き込む。
+
+
+構文
+    Write-ExPSOToList [[-Sheet] <Object>] [[-Address] <String>] [-PSObject] <PSObject[]> [[-Title] <String>] [[-Label]
+    <String>] [[-tmargin] <Int32>] [[-vmargin] <Int32>] [[-Members] <String[]>] [[-Header] <String[]>] [[-Format] <Hash
+    table>] [<CommonParameters>]
+・・・・
+```
+
+
 # いきなり使える系のコマンド
-・ Read-ExXlsxTableToPSO
-・ Write-ExPSOToXlsxTable
+- Read-ExXlsxTableToPSO
+- Write-ExPSOToXlsxTable
 
