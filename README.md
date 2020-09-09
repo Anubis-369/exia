@@ -23,7 +23,7 @@ Function        Write-ExPSOToXlsxTable                             0.0        Ex
 Function        Write-ExValToXlsx                                  0.0        Exia
 ```
 
-使い方はヘルプから参照できます。
+モジュールをインポートした後であれば、使い方はヘルプから参照できます。
 
 ```
 > get-help Write-ExPSOToList
@@ -72,9 +72,32 @@ $bk = $exl.Workbooks.Open("Excelファイルのパス")　　# $bk に＄exl に
 $ws = $bk.Worksheets(1)                            # $bk の一番目のWorksheetのデータが入る。
 ```
 
-## コマンドレットの実行
+## 2. コマンドレットの実行
+Comobject を使用するコマンドレットの中で、イメージがつかみやすい二つの使い方の例を挙げる。
+- Read-ExTableToPSO
+- Write-ExPSOToTable
 
-## オブジェクトの破棄
+$ws(ワークシートのデータ)を指定して、Write-ExPSOToList で PSObject をExcelファイルに書き込む
+```
+Write-ExPSOToList -PSObject <PSObject>-Sheet $ws -Address B2 -Title Name
+```
+パイプラインから渡したPSObjectの書き込みもできる。
+```
+<PSObject>| Write-ExPSOToList -Sheet $ws -Address B2 -Title Name
+```
+
+$ws(ワークシートのデータ)を指定して、Read-ExTableToPSO で PSObject をExcelファイル上のテーブルからデータを PSObject として出力する。
+```
+Read-ExTableToPSO -Book $bk -Table <Table Name>
+```
+
+## 3. ブックの保存
+書き込んだ内容を保存する。この操作は、VBAと同じやり方で保存ができる。
+```
+$bk.Save()
+```
+
+## 4. オブジェクトの破棄
 作業が終わったら、生成したオブジェクトの破棄を行います。これを行わないと、プロセスが起動し続けてメモリ上にデータが残ります。
 ```
 $bk.Close()
