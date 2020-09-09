@@ -44,6 +44,22 @@ Function        Write-ExValToXlsx                                  0.0        Ex
 
 
 # いきなり使える系のコマンド
+この二つのコマンドレットは、事前にComObjectを生成しなくても、Excelファイルから読み書きができる。ただし、内部でComobjectの生成と破棄を行っているのでオーバーヘッドが大きい。
+
 - Read-ExXlsxTableToPSO
 - Write-ExPSOToXlsxTable
 
+Excelファイルからテーブルのデータを読み込む。
+```
+Read-ExXlsxTableToPSO -Book <File Path>-Table <Table Name>
+```
+
+Excelファイルからテーブルのデータを読み込む。File Pathのファイルの Worksheet Name のシートの B2 から、PSObjectの内容を書き込む。
+```
+
+Write-ExPSOToXlsxTable -File <File Path> -PSObject <PSObject> -Sheet <Worksheet Name> -Address B2
+```
+パイプラインを通して書き込みを行うこともできる。
+```
+<PSObject> | Write-ExPSOToXlsxTable -File <File Path> -Sheet <Worksheet Name> -Address B2
+```
