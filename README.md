@@ -44,7 +44,7 @@ Function        Write-ExValToXlsx                                  0.0        Ex
 
 
 # いきなり使える系のコマンド
-この二つのコマンドレットは、事前にComObjectを生成しなくても、Excelファイルから読み書きができる。ただし、内部でComobjectの生成と破棄を行っているのでオーバーヘッドが大きい。
+この二つのコマンドレットは、事前にComObjectを生成しなくても、Excelファイルから読み書きができる。Exiaの使い方をつかむのに、このコマンドレットを試してみてみるといい。ただし、内部でComobjectの生成と破棄を行っているのでオーバーヘッドが大きい。
 
 - Read-ExXlsxTableToPSO
 - Write-ExPSOToXlsxTable
@@ -56,10 +56,17 @@ Read-ExXlsxTableToPSO -Book <File Path>-Table <Table Name>
 
 Excelファイルからテーブルのデータを読み込む。File Pathのファイルの Worksheet Name のシートの B2 から、PSObjectの内容を書き込む。
 ```
-
 Write-ExPSOToXlsxTable -File <File Path> -PSObject <PSObject> -Sheet <Worksheet Name> -Address B2
 ```
 パイプラインを通して書き込みを行うこともできる。
 ```
 <PSObject> | Write-ExPSOToXlsxTable -File <File Path> -Sheet <Worksheet Name> -Address B2
+```
+
+# 基本的な使い方
+コマンドレットを使用する前に、以下のコマンドを実行して事前にComobjectやExcelファイルを読み込んだオブジェクトを生成しておく。
+```
+$exl = New-Object -ComObject Excel.Application     # この操作で、$exl にExcel.Application のComObjectが生成される。
+$bk = $exl.Workbooks.Open("Excelファイルのパス")　　# $bk に＄exl に読み込まれたExcelファイルのデータが入る。
+$ws = $bk.Worksheets(1)                            # $bk の一番目のWorksheetのデータが入る。
 ```
