@@ -23,7 +23,7 @@ Function        Write-ExPSOToXlsxTable                             0.0        Ex
 Function        Write-ExValToXlsx                                  0.0        Exia
 ```
 
-使い方はヘルプから参照できます。
+モジュールをインポートした後であれば、使い方はヘルプから参照できます。
 
 ```
 > get-help Write-ExPSOToList

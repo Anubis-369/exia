@@ -280,10 +280,10 @@ Function Write-ExPSOToXlsxTable {
     Excelの起動処理、終了処理をコマンド内で完結させているため、前処理と後処理なしで書き込みができる。
 
     .EXAMPLE
-    <PSObject> | Write-ExPSOToXlsxTable -File <File Path> -Sheet $ws -Address B2
+    <PSObject> | Write-ExPSOToXlsxTable -File <File Path> -Sheet <Worksheet Name> -Address B2
 
     .EXAMPLE
-    Write-ExPSOToXlsxTable -File <File Path> -PSObject <PSObject> -Sheet $ws -Address B2
+    Write-ExPSOToXlsxTable -File <File Path> -PSObject <PSObject> -Sheet <Worksheet Name> -Address B2
 
     .PARAMETER File
     書き込みを行うファイルのパス
