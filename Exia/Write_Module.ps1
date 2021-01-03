@@ -433,12 +433,12 @@ Function Write-ExGPOToTable {
             }
 
             $para = @{
-                Sheet     = $Sheet;
-                Address   = $pt.Address();
-                Label = $Child_Label;
-                Members   = $Members;
-                Header    = $Header;
-                Format    = $Format
+                Sheet   = $Sheet;
+                Address = $pt.Address();
+                Label   = $Child_Label;
+                Members = $Members;
+                Header  = $Header;
+                Format  = $Format
             }
             
             $pt = $_.Group | Write-ExPSOToTable @para
@@ -492,8 +492,8 @@ Function Write-ExValToXlsx {
     $Sheet = $GP | ? { $_.Name -eq "sheet" } | % Value
     $Address = $GP | ? { $_.Name -eq "address" } | % Value
     if ($Format -ne "") {
-        $bk.Worksheets($Sheet).Range($Address).NumberFormatLocal = $Format
+        $Book.Worksheets($Sheet).Range($Address).NumberFormatLocal = $Format
     }
-    $bk.Worksheets($Sheet).Range($Address).Cells.Value2 = $Value
+    $Book.Worksheets($Sheet).Range($Address).Cells.Value2 = $Value
 }
 
